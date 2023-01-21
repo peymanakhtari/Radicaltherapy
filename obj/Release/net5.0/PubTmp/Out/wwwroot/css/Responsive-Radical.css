@@ -1,0 +1,242 @@
+﻿/*onlaptop*/
+
+@media (min-width: 1020px) {
+    span.radical {
+        top: 10px;
+        left: 130px;
+    }
+
+    span.therapy {
+        top: 10px;
+        left: 290px;
+    }
+}
+
+@media (min-width: 890px) {
+    /* .collapse {} */
+    .collapse {
+        position: fixed;
+        top: 17px;
+        right: 10px;
+    }
+
+        .collapse ul {
+            border: 1px solid;
+            border-top: none;
+            display: inline;
+        }
+
+            .collapse ul li {
+                float: right;
+            }
+
+                .collapse ul li a {
+                    border-top: 1px solid black;
+                    color: white;
+                    height: 60px;
+                    width: 110px;
+                    margin: auto;
+                    border-right: 1px solid black;
+                    padding: 5px 5px 5px 5px !important;
+                }
+
+    .menu-br {
+        display: block !important;
+    }
+
+    a.nav-link.first {
+        padding-top: 20px !important;
+    }
+
+    .deletereserve a {
+        padding: 7px 150px !important;
+    }
+   /* .main-card {
+        width: 250px
+    }*/
+    .message1 {
+        height: 70px !important
+    }
+
+    .comment-box {
+        width: 60%
+    }
+
+    .preReservation-link {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+
+    .customer-video {
+        width: 60%;
+    }
+
+        .customer-video .description {
+            font-size: 18px;
+        } 
+   
+}
+
+
+/*on mobile horizontal*/
+
+@media (max-width: 890px) {
+    .collapse {
+        right: 0;
+    }
+
+        .collapse ul {
+            border: 1px solid;
+            border-top: none;
+            width: 240px;
+        }
+
+            .collapse ul li {
+                text-align: right;
+            }
+
+                .collapse ul li a {
+                    border-top: 1px solid;
+                    color: white;
+                }
+   /* .main-card {
+        width: 235px
+    }*/
+    .main-card div p {
+        bottom: 0px;
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+
+    .comment-box {
+        width: 70%
+    }
+
+    .preReservation-link {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .main-card h6 {
+        font-size: 13px;
+    }
+    .customer-video {
+        width: 70%;
+    }
+
+        .customer-video .description {
+            font-size: 16px;
+        }
+
+}
+
+@media(max-width: 889px) {
+       span.radical {
+        top:10px;
+        left: 100px;
+    }
+
+    span.therapy {
+        top: 10px;
+        left: 260px;
+    }
+}
+
+/*on mobile vertical*/
+
+@media(max-width: 490px) {
+    .collapse {
+        right: 0;
+    }
+
+        .collapse ul {
+            border: 1px solid;
+            border-top: none;
+            width: 240px;
+        }
+
+            .collapse ul li {
+                text-align: right;
+            }
+
+                .collapse ul li a {
+                    border-top: 1px solid;
+                    color: white
+                }
+
+    .br-class {
+        display: block !important;
+    }
+
+    .Reserve-link {
+    }
+
+    .Reserve-link {
+        font-size: 14px;
+        padding-top: 3px;
+    }
+
+    .datelable {
+        font-size: 15px !important
+    }
+
+    #select-reserve br {
+        display: block !important;
+    }
+
+    #select-reserve b {
+        display: none !important;
+    }
+   /* .main-card{
+        width:200px
+    }*/
+    .main-card div p {
+        bottom: 0px;
+        margin-bottom: 8px;
+        font-size: 15px;
+    }
+
+    .search-box {
+        font-size: 13px
+    }
+
+    .comment-box {
+        width: 85%
+    }
+
+    .preReservation-link {
+        font-size: 14px;
+        padding: 10px 10px;
+
+    }
+    .customer-video {
+        width: 80%;
+    }
+    .customer-video .description {
+        font-size: 14px;
+    }
+    span.radical {
+        top: -5px;
+        left: 100px;
+    }
+
+    span.therapy {
+        top: 30px;
+        left: 160px;
+    }
+}
+
+@media(max-width: 385px) {
+    span.radical {
+        top:-5px;
+        left: 100px;
+    }
+
+    span.therapy {
+        top:30px;
+        left: 140px;
+    }
+}
+        
+

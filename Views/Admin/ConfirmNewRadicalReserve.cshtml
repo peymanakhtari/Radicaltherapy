@@ -1,0 +1,30 @@
+﻿@model List<RadicalTherapy.Models.RadicalReserveAdmin>
+@using RadicalTherapy.Utility.Convertor;
+@{
+    ViewData["Title"] = "ConfirmNewRadicalReserve";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+<br />
+<br />
+@foreach (var item in Model)
+{
+
+    <div class="not-confirmed">
+        <form action="/Admin/RejectBankResept" method="post">
+            <img src="@System.Text.Encoding.Default.GetString(item.RadialReserve.ReseptPic)" alt="reserveimage" />
+            <br />
+            <label style="background-color:aqua;padding:3px;"> @item.RadialReserve.User.Name</label>
+            <label> user: <span style="font-size:1.2rem">@item.RadialReserve.User.WhatsApp</span></label><br />
+            <a style="font-size:1.3rem" href="@item.WhatsAppLink1">چت واتساپ</a><br />
+            <button type="submit" style="background-color:red">رد</button><a asp-action="ConfirmBankResept" asp-controller="Admin" asp-route-userid="@item.RadialReserve.User.ID" class="confirmResept" style="background-color:green">تایید رزرو</a><br />
+            <textarea name="reason" style="width:100%;"></textarea>
+            <input type="number" name="userid" value="@item.RadialReserve.User.ID" hidden />
+        </form>
+
+    </div>
+}
+
+
+

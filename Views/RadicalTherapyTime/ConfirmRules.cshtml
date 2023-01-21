@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "ConfirmRules";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top:8rem">
+    <div class="text-right"> <a class="btn btn-secondary " asp-action="Index" asp-controller="User">بازگشت</a></div>
+    <div class="dateTitleConfirmRules">
+        <span class="datetimeString">@ViewBag.datetimeString
+            <span style="color:red;font-size:26px">@ViewBag.morning</span> </span>
+    </div>
+
+    <div class="upload-recept-box shadow">
+    
+        <div class="radical-reserve-roles ">
+            <p dir="rtl">
+                تایم هر جلسه مشاوره <span>@ViewBag.duration</span> دقیقه
+                <br> و مبلغ آن  <span class="">@ViewBag.price </span>  تومان می‌باشد.
+            </p>
+      
+            <p dir="rtl"> <span class="" style="color:red;font-family:shabnam-bold">توجه : </span>تایم انتخابی شما <span
+                    style="color:red">قابلیت جابجایی یا کنسل کردن</span> ندارد، لطفاً در انتخاب تایم، نهایت دقت را داشته
+                باشید.</p>
+            
+        </div>
+
+    </div>
+    <form id="form_resept" name="form" action="/RadicalTherapyTime/Payment">
+        <div dir="rtl" style="font-size:15px" class="custom-control custom-checkbox text-right font-weight-bold">
+            <input type="checkbox" class="custom-control-input" id="customCheck">
+            <label class="custom-control-label" for="customCheck">شرایط فوق را  می پذیرم</label>
+            <br />
+        </div>
+        <br>
+        <span style="display:none;text-align: right;" id="isNotChecked" class="checkbox-roles">
+           موارد فوق را مطالعه کنید 
+        </span>
+        <br />
+        <div>
+      
+            <input id="btnSubmintBankResept" onclick="submitReserve()" type="button"
+                style="font-family:Shabnam;font-weight:bold" class="btn btn-primary px-5"
+                value="اتصال به درگاه پرداخت" />
+
+        </div>
+
+    </form>
+</div>
+
+<br />
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<script>
+    window.addEventListener("pageshow", function (event) {
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != "undefined" &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            window.location.reload();
+        }
+    });
+</script>

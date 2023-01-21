@@ -1,0 +1,54 @@
+﻿@using RadicalTherapy.Models
+@model RadicalTherapy.Models.DeleteComment
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DelCmt</title>
+</head>
+<body>
+
+    <br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+    <br /><br />
+
+    @foreach (var item in ViewData["comments"] as List<CommentModel>)
+    {
+        <form dir="rtl" style="display:inline-block;margin:auto;width:230px;border:1px solid black;padding:5px" action="/Admin/DeletePartOfCmt" method="post">
+            <input type="text" name="Type" hidden value="@item.Type" />
+            <input type="number"  name="subjectId" value="@ViewBag.subjectId" hidden/>
+            <input type="text" id="@item.Id" value="@item.Id" hidden name="Id" />
+            @if (item.Status)
+            {
+                <div style="width:20px;height:10px;background-color:green"></div>
+            }
+            else
+            {
+                <div style="width:20px;height:10px;background-color:red"></div>
+            }
+            <p style="background-color:yellow;">@item.UserName</p>
+            @for (int i = 0; i < item.Text.Length; i++)
+            {
+                <div>
+                    <input style="display:inline-block;" type="radio" name="Index" value="@i" />
+                    <div style="display:inline-block">@item.Text[i]</div>
+                </div>
+            }
+            <br />
+            <input type="submit" value="حذف" />
+
+
+        </form>
+    }
+
+
+
+
+</body>
+</html>

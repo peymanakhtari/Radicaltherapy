@@ -1,0 +1,102 @@
+﻿@using RadicalTherapy.Models
+@using RadicalTherapy.Data.model
+@using RadicalTherapy.Utility.Convertor;
+@model dynamic
+@{
+    Layout = null;
+
+}
+<script src="~/content/Jquery.js"></script>
+
+<br />
+<br />
+<a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+<br />
+<br />
+<div dir="ltr" style="text-align:right;margin-right:50px">
+
+    @foreach (var cmt in (List<Subject>)Model.SubList)
+    {
+        <div dir="ltr" style="display:block;border:1px solid black;padding:10px;font-size:26px;width:92%;margin:auto">
+            <p style="background-color:sandybrown">@cmt.Tite</p>
+            @{
+                List<CommentModel> _comments = Model.Comments;
+                var Comments = _comments.Where(c => c.subjectId == cmt.Id);
+            }
+
+            @foreach (var item in Comments)
+            {
+                <input type="number" value="@item.subjectId" id="subjectId-@item.Id" hidden />
+                <p style="background-color:lightcyan">نام: &nbsp;@item.UserName</p>
+
+
+                for (int i = 1; i <= item.Text.Length; i++)
+                {
+                    <div>@item.Text[i - 1]</div>
+                    if (i < item.Text.Length)
+                    {
+                        <div>@item.Answer[i - 1]</div>
+                    }
+                    <br />
+                }
+
+                <textarea style="width:100%;height:100px;border :1px solid green;text-align:right;font-size:24px" type="text" rows="2" id="reply-@item.Id"></textarea>
+                <input style="background-color:pink;color:white;padding:6px 20px;font-size:24px" value="بستن" type="button" onclick="Checked(this.id)" id="btnChecked-@item.Id" />
+                <input style="background-color:green;color:white;padding:6px 20px;font-size:24px" value="ثبت" type="button" onclick="Reply(this.id)" id="btnReply-@item.Id" />
+                <br />
+                <br />
+            }
+        </div>
+
+    }
+
+
+
+</div>
+
+<script>
+
+    function Reply(Val) {
+        var id = Val.split('-')[1];
+        var text = document.getElementById("reply-" + id).value;
+        var subjectId = document.getElementById("subjectId-" + id).value;
+
+        $.ajax({
+            type: "POST",
+            url: '/Admin/Reply',
+            data: {
+                "Id": id,
+                "text": text,
+                "subjectId": subjectId
+            },
+            success: function (response) {
+                document.getElementById("btnReply-" + id).style.backgroundColor = "red";
+                document.getElementById("btnReply-" + id).value = "ارسال شد";
+                document.getElementById("btnReply-" + id).onclick = null;
+            },
+            error: function (response) {
+                alert('ارسال نشد')
+            }
+        });
+    }
+    function Checked(Val) {
+        var id = Val.split('-')[1];
+
+        $.ajax({
+            type: "POST",
+            url: '/Admin/Checked',
+            data: {
+                "Id": id,
+            },
+            success: function (response) {
+                document.getElementById("btnChecked-" + id).style.backgroundColor = "red";
+                document.getElementById("btnChecked-" + id).value = "بسته شد";
+                document.getElementById("btnChecked-" + id).onclick = null;
+            },
+            error: function (response) {
+                alert('نظر بسته نشد')
+            }
+        });
+    }
+
+</script>

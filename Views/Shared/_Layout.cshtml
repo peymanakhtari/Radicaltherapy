@@ -1,0 +1,99 @@
+﻿@using RadicalTherapy.Data.Repository
+<!DOCTYPE html>
+<html lang="en">
+
+@{
+    string questionurl = "porsesh_pasokh";
+  
+
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["metaDescription"]">
+    <link rel="shortcut icon" href="~/img/alizare.png" />
+    @*<script src="~/content/Jquery.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   @* <link rel="stylesheet" href="~/content/bootstrap.min.css">*@
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   @* <script src="~/content/bootstrap.min.js"></script>*@
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/js/jquery-radical.js"></script>
+    <script src="~/js/JavaScript.js"></script>
+
+    <link href="~/css/StyleSheet-Radical.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/Font-Sobhan.css" rel="stylesheet" />
+    <link href="~/css/Responsive-Radical.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!--------navbar----------->
+    <div style="height:88px" class="Header bg-light">
+        <a class="navbar-brand m-1 p-0" href="#">
+            <img style="width: 80px;" class="ml-1" src="../../img/alizare.png"
+                 alt="radicaltherapy">
+        </a>
+
+        <span class="radicaltherapy radical">Radical</span> <span class="radicaltherapy therapy">Therapy</span>
+
+        <div id="togglemenu" class="menu-container mr-4 mt-4" style=" text-align: right;float:right">
+            <button id="btn-togglemenu"><img src="../../img/hambergur-icon.png" style="width:30px" alt=""></button>
+        </div>
+
+    </div>
+
+    <div dir="rtl" class="collapse menu-container" id="collapsibleNavbar">
+        <ul style="font-family: Iranian Sans;font-size: 14px; border:none" class="shadow navbar-nav text-center pr-0  ">
+            <li class="nav-item">
+                @Html.ActionLink("صفحه اصلی", "Index", "Home", null, new { @class = "nav-link first" })
+            </li>
+            <li class="nav-item">
+                <a class="nav-link first" href="@Url.Action("Index","Subjects",new { id=questionurl})">
+                    پرسش
+                    و پاسخ
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="@Url.Action("CustomerVideo","Home")">رضایت مراجعین عزیز</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="radicaltherapy-menu" href="@Url.Action("Index","User")">
+                    رزرو تایم رادیکال
+                    تراپی
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link first " href="@Url.Action("Contact","Home")">راه های ارتباطی</a>
+            </li>
+        </ul>
+    </div>
+
+
+    @RenderBody()
+    <div id="footerLink">
+        <div class="w-100">
+            <a class="bottom-link youtube-link" href="https://youtube.com/channel/UCOtumrs1XR_r2_0FyPMzrcA">
+                <img src="~/img/youtube-icon.png" alt="youtube">
+            </a>
+
+            <a id="preReservation-link" class="bottom-link preReservation-link whatsappLink"
+               href="https://wa.me/+905459559831?text=">
+                <img src="~/img/whatsapp.png" alt="whatsapp">پیام به ادمین
+            </a>
+
+            <a class="bottom-link instagram-link" href="https://www.instagram.com/radical__therapy?r=nametag">
+                <img src="~/img/instagram-icon.png" alt="instagram">
+            </a>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

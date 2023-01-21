@@ -1,0 +1,99 @@
+﻿@model List<RadicalTherapy.Models.ReserveAdmin>
+@using RadicalTherapy.Utility.Convertor
+@using RadicalTherapy.Data.Repository
+@{
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    string message = null;
+
+    using (UnitOfWork db = new UnitOfWork())
+    {
+        message = db.DataRepository.Get(c => c.Key == "whatsApp").First().Value;
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reserves</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+    <a class="FillpreReservation" href="@Url.Action("FillpreReservation","Admin2")">پر کردن دستی</a>
+    <br /><br />
+    <form action="/Admin/DeleteReserve" method="post">
+        <input type="tel" style="font-size:26px;width:80px" name="Id" />
+        <input type="submit" value="حذف" style="font-size:25px;padding:12px" />
+    </form>
+    <table style="font-size:22px" id="customers">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td style="min-width:50px"><a id="link-@item.Id" href="@item.Message"
+                    style="background-color:darkorange;padding:6px;border-radius:5px;">چت</a></td>
+                <td><input readonly id="@item.Id" style="border:none;font-size:22px;width:160px" value="@item.Mobile" />
+                </td>
+                <td><input id="mobile-@item.Id" style="padding:5px;width:160px;font-size:20px" type="text" /><input
+                    onclick="setLink(this.id)"
+                    style="font-size:17px;padding:4px 8px; background-color: blue; color:white" id="set-@item.Id"
+                    value="set" type="button" /></td>
+                <td>@item.Name</td>
+                <td style="font-size:20px">@DateTool.Dayofweek(item.Datetime)</td>
+                <td>@item.Datetime.TimeOfDay.ToString().Remove(item.Datetime.TimeOfDay.ToString().Length - 3)</td>
+                <td>@DateTool.MonthOfYear(item.Datetime.ToShamsi1())</td>
+                <td>@item.Datetime.ToShamsi1().Day</td>
+                <td class="questions" style="min-width:70px"><a
+                    style="background-color:#04AA6D;padding:3px;border-radius:5px;"
+                    href="@Url.Action("ReserveQuestions","admin2",new{questionId=@item.QuestionId})">سوالات</a></td>
+            </tr>
+
+        }
+    </table>
+    <br /><br /><br /><br />
+    <p style="font-size:22px;margin-right:20px">نام:@@ <br />روز هفته :# <br />ماه:% <br /> عدد روز:~ <br />عدد ساعت:!
+        <br />عدد دقیقه:* <br />خط بعد:$</p>
+    <form action="/Admin/SetWhatsAppURL" method="post">
+        <textarea style="width:730px;font-size:22px;height:100px" rows="2" name="text"></textarea>
+        <input type="submit" style="padding:10px ;font-size:30px" value="ثبت" />
+    </form>
+    <br /><br />
+    <p style="font-size:26px;margin-left:20px">@message</p>
+    <script src="~/content/Jquery.min.js"></script>
+    <script src="~/js/js-admin.js"> </script>
+</body>
+
+</html>

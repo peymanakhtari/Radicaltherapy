@@ -1,0 +1,149 @@
+﻿@using RadicalTherapy.Data.model
+@using RadicalTherapy.Utility.Convertor
+@{
+    ViewData["Title"] = "FillRadicalReserves";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    List<RadicalReserve> Reserves = (List<RadicalReserve>)ViewBag.reserves;
+}
+<a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+<br />
+<br />
+@foreach (var item in (List<RadicaReserveDatetimes>)ViewBag.dateList)
+{
+    <div dir="rtl" style="font-family:bkoodakbold" class="col-12 col-sm-6 col-lg-3">
+        <div class="radicalreserve-box">
+            <span class="radicalreserve-box-datetime">
+                @item.DayOfWeek @item.Times[0].ToShamsi1().Day-
+                @item.MounthOfYear
+            </span>
+            <div class="radicalreserve-hour">
+
+                @foreach (var time in item.Times)
+                {
+                    @if (Reserves.Any(c => c.DateTime == time))
+                    {
+                        if (Reserves.Any(c => c.DateTime == time && c.User.UserName == "000"))
+                        {
+                              <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+                asp-route-reserveId="@Reserves.Where(c=>c.DateTime==time).FirstOrDefault().ID"
+                style="background-color:teal" class="hour-fulled"><span>@time.Minute : @time.Hour </span> </a>
+                        }
+                        else
+                        {
+                              <a style="background:#eb0017" class="hour-fulled"><span>@time.Minute : @time.Hour </span> </a>
+
+                        }
+
+                    }
+                    else
+                    {
+                        <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+                asp-route-datetime="@time"><span>@time.Minute : @time.Hour</span> </a>
+
+                    }
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+}
+@* @foreach (var item in (List<RadicaReserveDatetimes>)ViewBag.dateList)
+    {
+    <div class="col-12 col-sm-6 col-lg-3">
+    <div class="radicalreserve-box">
+    <span class="radicalreserve-box-datetime">@item.DayOfWeek @item.datetime8.ToShamsi1().Day -
+    @item.MounthOfYear</span>
+    <div class="radicalreserve-hour">
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime8 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime8).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>8</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime8"><span>8</span> </a>
+    }
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime9 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime9).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>9</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime9"><span>9</span> </a>
+    }
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime10 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime10).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>10</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime10"><span>10</span> </a>
+    }
+
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime11 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime11).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>11</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime11"><span>11</span> </a>
+    }
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime12 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime12).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>12</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime12"><span>12</span> </a>
+    }
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime14 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime14).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>14</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime14"><span>14</span> </a>
+    }
+
+    @if (Reserves.Any(c => c.DateTime == item.datetime15 && c.User.UserName == "000"))
+    {
+    <a asp-action="AdminReleaseRadicalReserve" asp-controller="Admin"
+    asp-route-reserveId="@Reserves.Where(c=>c.DateTime==item.datetime15).FirstOrDefault().ID"
+    style="background-color:teal" class="hour-fulled"><span>15</span> </a>
+    }
+    else
+    {
+    <a asp-action="AdminTakeRadicalReserve" asp-controller="Admin"
+    asp-route-datetime="@item.datetime15"><span>15</span> </a>
+    }
+
+    <script src="~/js/js-admin"></script>
+    </div>
+    </div>
+    </div>
+    } *@

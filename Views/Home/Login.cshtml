@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="padding-top:8rem;width:100%;text-align:center">
+    <div class="login-box">
+        <a asp-controller="Home" asp-action="LoginMethod" asp-route-sms="true"> ورود با شماره موبایل</a>
+        <a asp-controller="Home" asp-action="LoginMethod" asp-route-sms="false">ورود با ایمیل</a>
+        <a style="background-color:red" asp-controller="Home" asp-action="RadicalTherapyTimes" > رزرو تایم  رادیکال تراپی </a>
+    </div>
+</div>
+

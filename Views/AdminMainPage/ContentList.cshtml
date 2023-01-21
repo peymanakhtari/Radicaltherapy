@@ -1,0 +1,53 @@
+﻿@model List<RadicalTherapy.Data.model.Content>
+@{
+    ViewData["Title"] = "ContentList";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+
+}
+
+<br>
+<br>
+<br>
+ <div style="font-size: 28px;text-align: center;">@ViewBag.subjectTitle</div>
+ <br>
+<div class="admin-btn-container text-center" style="margin-left:50px">
+    @foreach (var item in Model)
+    {
+        string type = "";
+        @if (item.Type == 1)
+        {
+            type = "تیتر";
+        }
+        else if (item.Type == 2)
+        {
+            type = "متن";
+        }
+        else if (item.Type == 3)
+        {
+            type = "عکس";
+        }
+        else if (item.Type == 4)
+        {
+            type = "فیلم";
+        }
+        <div>
+              <a  style="font-size:32px" href="@Url.Action("Content",new{contentId=item.Id})"> &nbsp;&nbsp; @type  @item.Sequence &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:red">@item.Id</span> </a>
+        </div>
+   
+        <br />
+
+        <br />
+    }
+    <a style="font-size:24px;background-color:red;color:white;padding:6px" class="ml-4 new-object p-2" href="@Url.Action("AddNewContent",new {subjectId= ViewBag.subjectId})">افزودن محتوا</a>
+    <br><br><br>
+    <form action="DeleteContent" method="post">
+        <input type="number" name="subjectId" value="@ViewBag.subjectId" hidden>
+        <input name="contentId" type="number">
+        <input type="submit" value="حذف">
+
+    </form>
+    <br><br>
+    <div class="ml-5">
+        <a asp-action="Index">بازگشت</a>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "ConfirmationCode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/css/component.css" rel="stylesheet" />
+
+<div style="padding-top: 8rem ; width: 100%; text-align: center; font-family:BKoodakBold">
+    
+    <p dir="rtl" style="font-size:1.2rem;color:red">@ViewBag.text</p>
+    <form style="width:18rem;margin-top:10px" action="/Home/ConfirmationCode" method="post" class="content-area mx-auto ">
+        <span style="font-size:1.3rem;margin:1rem">کد فرستاده شده را وارد کنید</span>
+        
+        <fieldset class='number-code'>
+            <div>
+                <input type='number' name="c1" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                <input type='number' name="c2" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                <input type='number' name="c3" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                <input type='number' name="c4" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+            </div>
+        </fieldset>
+        <span style="font-size:1.3rem;margin:1rem;color:red" hidden>کد وارد شده اشتباه است</span>
+
+        <input id="submit" type="submit" onclick="removeSubmit()" class="btn btn-secondary mt-3 " value="تایید" />
+        <button id="waitbutton"  style="display:none" class="btn btn-secondary mt-3 ">  <span style="margin-bottom:3px" class="spinner-border spinner-border-sm  mr-2"></span>کمی صبر کنید</button>
+        @if (ViewBag.wrongCode != null)
+        {
+            <div style="margin-top:8px;color:red">کد وارد شده اشتباه است</div>
+        }
+    </form>
+</div>
+<script>
+    function removeSubmit() {
+        var IsinputFill = true;
+        $('input[type=number]').each(function () {
+            if (this.value =='') {
+                IsinputFill = false;
+            }
+        })
+        if (IsinputFill) {
+            document.getElementById('submit').style.display = 'none';
+            document.getElementById('waitbutton').style.display = 'block';
+
+        }
+    
+    }
+</script>
+<script src="~/js/component.js"></script>

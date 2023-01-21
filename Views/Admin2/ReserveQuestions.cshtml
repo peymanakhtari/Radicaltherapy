@@ -1,0 +1,597 @@
+﻿@model RadicalTherapy.Data.model.Question
+@{
+    ViewData["Title"] = "ReserveQuestions";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+<link rel="stylesheet" href="~/css/styleSheet-submitReserve.css">
+
+@* @Model.q1
+@Model.q2
+@Model.q3
+@Model.q4
+@Model.q5
+@Model.q6
+@Model.q7
+@Model.q8 *@
+<br><br>
+  <div dir="rtl"  class="question-box">
+        <a class="return toMobile"  href="@Url.Action("Reserves","admin")">بازگشت</a>
+        <br><br>
+        <div class="answer-questions">لطفا به سوالات زیر پاسخ دهید</div>
+        <div style="margin-top: 0;" class="container text-right">
+            <div dir="ltr" id="q1" class="question textbox">
+                <p class="text-question" for="q1">سن : </p>
+                <div class="form-check">
+                    <input type="number" name="q1" class=" small-number" aria-describedby="emailHelp">
+                    سال
+                </div>
+            </div>
+            <div id="q2" class="question">
+                <p> وضعیت تاهل : </p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="q2" value="0"><span>
+                                مجرد</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="q2" value="1"><span>
+                                متاهل</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q3" class="question">
+                <p>ازدواج اجباری داشتید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio3">
+                            <input type="radio" class="form-check-input" id="radio3" name="q3" value="1"><span>
+                                بله</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio4">
+                            <input type="radio" class="form-check-input" id="radio4" name="q3" value="0"><span>
+                                خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q4" class="question">
+                <p>چند بار ازدواج کرده اید ؟ </p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio51">
+                            <input type="radio" class="form-check-input" id="radio51" name="q4" value="0"><span>مجردم
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio5">
+                            <input type="radio" class="form-check-input" id="radio5" name="q4" value="1"><span> یک بار
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio6">
+                            <input type="radio" class="form-check-input" id="radio6" name="q4" value="2"><span>
+                                بیشتر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q5" class="question textbox">
+                <p class="text-question" for="q5">چند فرزند بودید؟ </p>
+
+                <div class="form-check">
+                    <input type="number" name="q5" class=" small-number" aria-describedby="emailHelp">
+                </div>
+            </div>
+            <div id="q6" class="question textbox">
+                <p class="text-question" for="q6">شما فرزند چندم بودید؟ </p>
+
+                <div class="form-check">
+                    <input type="number" name="q6" class=" small-number" aria-describedby="emailHelp">
+                </div>
+            </div>
+
+            <div id="q7" class="question">
+                <p>رابطۀ والدین شما باهم در سنین زیر ۹ سالگی : </p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio7">
+                            <input type="radio" class="form-check-input" id="radio7" name="q7" value="0"><span>خوب
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio8">
+                            <input type="radio" class="form-check-input" id="radio8" name="q7" value="1"><span> بحث
+                                و دعوا</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio9">
+                            <input type="radio" class="form-check-input" id="radio9" name="q7" value="2"><span> کتک
+                                کاری</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q8" class="question">
+                <p>رابطۀ شما با مادرتان در سنین زیر ۹ سال چگونه بود؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio10">
+                            <input type="radio" class="form-check-input" id="radio10" name="q8" value="0"><span>خوب
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio11">
+                            <input type="radio" class="form-check-input" id="radio11" name="q8" value="1"><span>
+                                بحث و دعوا</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio12">
+                            <input type="radio" class="form-check-input" id="radio12" name="q8" value="2"><span>
+                                کتک کاری</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q9" class="question">
+                <p>رابطۀ شما با پدرتان در سنین زیر ۹ سال چگونه بود؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio13">
+                            <input type="radio" class="form-check-input" id="radio13" name="q9" value="0"><span>خوب
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio14">
+                            <input type="radio" class="form-check-input" id="radio14" name="q9" value="1"><span>
+                                بحث و دعوا</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio15">
+                            <input type="radio" class="form-check-input" id="radio15" name="q9" value="2"><span>
+                                کتک کاری</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q10" class="question">
+                <p>رابطۀ شما با خواهر و برادرتان در سنین زیر ۹ سال چگونه بود؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio16">
+                            <input type="radio" class="form-check-input" id="radio16" name="q10" value="0"><span>خوب
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio17">
+                            <input type="radio" class="form-check-input" id="radio17" name="q10" value="1"><span> بحث و
+                                دعوا</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio111">
+                            <input type="radio" class="form-check-input" id="radio111" name="q10" value="2"><span> کتک
+                                کاری</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q11" class="question">
+                <p>والدین شما، طلاق یا ازدواج مجدد داشته اند؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio18">
+                            <input type="radio" class="form-check-input" id="radio18" name="q11" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio19">
+                            <input type="radio" class="form-check-input" id="radio19" name="q11" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q12" class="question">
+                <p>در خانوادۀ خودتان فرد معتاد داشتید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio20">
+                            <input type="radio" class="form-check-input" id="radio20" name="q12" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio21">
+                            <input type="radio" class="form-check-input" id="radio21" name="q12" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q13" class="question">
+                <p>اقدام به خودکشی داشتید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio22">
+                            <input type="radio" class="form-check-input" id="radio22" name="q13" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio23">
+                            <input type="radio" class="form-check-input" id="radio23" name="q13" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q14" class="question">
+                <p>خانوادۀ شما پسردوست بودن؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio24">
+                            <input type="radio" class="form-check-input" id="radio24" name="q14" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio25">
+                            <input type="radio" class="form-check-input" id="radio25" name="q14" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q15" class="question">
+                <p>والدین شما بیماری وسواس داشتند؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio26">
+                            <input type="radio" class="form-check-input" id="radio26" name="q15" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio27">
+                            <input type="radio" class="form-check-input" id="radio27" name="q15" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q16" class="question">
+                <p>والدین شما بیماری افسردگی داشتند؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio28">
+                            <input type="radio" class="form-check-input" id="radio28" name="q16" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio29">
+                            <input type="radio" class="form-check-input" id="radio29" name="q16" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q17" class="question">
+                <p>تحقیر،مقایسه یا مسخره می‌شدید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio220">
+                            <input type="radio" class="form-check-input" id="radio220" name="q17" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio231">
+                            <input type="radio" class="form-check-input" id="radio231" name="q17" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q18" class="question">
+                <p>کدامیک از شخصیت های زیر در مورد شما بیشتر صدق میکند؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio161">
+                            <input type="radio" class="form-check-input" id="radio161" name="q18" value="0"><span>آرام 
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio171">
+                            <input type="radio" class="form-check-input" id="radio171" name="q18" value="1"><span> خجالتی
+                                </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio1112">
+                            <input type="radio" class="form-check-input" id="radio1112" name="q18" value="2"><span> پرخاشگر
+                                </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q19" class="question">
+                <p>تا به حال قرص های روانپزشکی مصرف داشتید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio222">
+                            <input type="radio" class="form-check-input" id="radio222" name="q19" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio233">
+                            <input type="radio" class="form-check-input" id="radio233" name="q19" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q20" class="question">
+                <p>بابت درس خواندن، تحت فشار خانواده بودید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio224">
+                            <input type="radio" class="form-check-input" id="radio224" name="q20" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio235">
+                            <input type="radio" class="form-check-input" id="radio235" name="q20" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q21" class="question">
+                <p>بابت حجاب و پوشش، تحت فشار خانواده بودید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio226">
+                            <input type="radio" class="form-check-input" id="radio226" name="q21" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio237">
+                            <input type="radio" class="form-check-input" id="radio237" name="q21" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q22" class="question">
+                <p>در سنین زیر ۹ سالگی، با افراد دیگری بجز خانوادۀ خودتان زندگی میکردید؟ مثل مادربزرگ، دایی، خاله ...
+                </p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio228">
+                            <input type="radio" class="form-check-input" id="radio228" name="q22" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio239">
+                            <input type="radio" class="form-check-input" id="radio239" name="q22" value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q23" class="question">
+                <p>شخصی از عزیزان شما فوت کرده که برای شما خیلی خیلی مهم بوده باشه؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2211">
+                            <input type="radio" class="form-check-input" id="radio2211" name="q23" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2312">
+                            <input type="radio" class="form-check-input" id="radio2312" name="q23"
+                            value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q24" class="question">
+                <p> خاطرۀ دست‌درازی یا آزارجنسی داشتید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2213">
+                            <input type="radio" class="form-check-input" id="radio2213" name="q24" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2314">
+                            <input type="radio" class="form-check-input" id="radio2314" name="q24"
+                            value="0"><span>خیر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="q25" class="question">
+                <p>روابط عاطفی قبل از ازدواج داشتید؟</p>
+                <div class="radio-cotainer">
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2215">
+                            <input type="radio" class="form-check-input" id="radio2215" name="q25" value="1"><span>بله
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="radio2316">
+                            <input type="radio" class="form-check-input" value="0" id="radio2316"
+                            name="q25"><span>خیر</span>
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <br>
+            
+
+        </div>
+    </div>
+<script>
+
+ var input1 = document.getElementsByName("q1")[0];
+    input1.value = @Model.q1;
+    var input5 = document.getElementsByName('q5')[0];
+    input5.value =  @Model.q5;;
+    var input6 = document.getElementsByName('q6')[0];
+    input6.value = @Model.q6;
+
+        var radios = document.getElementsByName("q2" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q2) {
+                radios[idx].checked = true;
+            }
+        }
+          var radios = document.getElementsByName("q3" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q3) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q4" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q4) {
+                radios[idx].checked = true;
+            }
+        }
+        
+         var radios = document.getElementsByName("q7" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q7) {
+                radios[idx].checked = true;
+            }
+        }
+        
+         var radios = document.getElementsByName("q8" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q8) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q9" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q9) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q10" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q10) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q11" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q11) {
+                radios[idx].checked = true;
+            }
+        }
+        var radios = document.getElementsByName("q12" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q12) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q13" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q13) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q14" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q14) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q15" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q15) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q16" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q16) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q17" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q17) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q18" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q18) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q19" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q19) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q20" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q20) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q21" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q21) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q22" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q22) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q23" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q23) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q24" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q24) {
+                radios[idx].checked = true;
+            }
+        }
+         var radios = document.getElementsByName("q25" );
+        for (var idx = 0; idx < radios.length; idx++) {
+            if (radios[idx].value ==  @Model.q25) {
+                radios[idx].checked = true;
+            }
+        }
+     
+        
+    
+</script>

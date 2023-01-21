@@ -1,0 +1,90 @@
+﻿@using RadicalTherapy.Data.model
+@{
+    ViewData["Title"] = "رضایت مراجعین";
+    Layout = "~/Views/Shared/Layout_Subjects.cshtml";
+
+}
+
+<br />
+<br />
+<br />
+<br />
+@Html.ActionLink("بازگشت", "Index", "Home", null, new { @class = "return", @style = "  font-family:bkoodakbold;float:right;margin:15px 20px 0px 0 " })
+
+
+<style>
+    mark.a {
+        color: #ff0000;
+
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous">
+</script>
+<div style="text-align: center;padding-top: 80px;">
+    <input style="text-align: center;font-family: Shabnam-Bold;" class="col-8 col-sm-7 col-md-5 col-lg-4 search-box" type="text" id="myInput" onkeyup="myFunction()" placeholder="جستجوی گزارش درمان ها" title="Type in a name">
+</div>
+<br />
+<input id="subjectId" value="@ViewBag.subjectId" hidden />
+<ul id="myUL" style="padding: 0;">
+      <span dir="rtl" class="turnOnVpn text-center d-block">برای مشاهده ویدیو ها فیلتر شکن خود را روشن کنید  
+                      <span class="mt-3 videoLoading" style="font-family:shabnam ;font-weight:bold;" dir="ltr" >
+                  <button dir="rtl"  style="min-width:8rem;font-weight:bold;" class="btn btn-success">
+                    در حال بارگذاری  <span style="margin-bottom:6px;margin-right:4px" class="spinner-border spinner-border-sm"></span>
+                </button>
+                    </span>
+                </span>
+    @foreach (var item in (List<CustomerVideo>)ViewBag.videos)
+    {
+        <li class="customer-video">
+             <div  class="sub-video ">
+               <div class="mt-2" >@Html.Raw(item.Link)</div>  
+            </div>
+            <p class="description"><bdi>@item.Description</bdi>  </p>
+
+            <br />
+        </li>
+     
+
+    }
+</ul>
+
+
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, h6, i, p, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+
+
+        for (i = 0; i < li.length; i++) {
+            h6 = li[i].getElementsByTagName("h6")[0];
+            p = li[i].getElementsByTagName("p")[0];
+            // Select the whole paragraph
+            var ob = new Mark(p);
+
+            // First unmark the highlighted word or letter
+            ob.unmark();
+            pValue = p.textContent || p.innerText || p.innerHTML;
+            if (pValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+                // Highlight letter or word
+                ob.mark(
+                    document.getElementById("myInput").value, {
+                    className: 'a'
+                }
+                );
+
+            } else {
+                li[i].style.display = "none";
+            }
+
+        }
+    }
+      window.onload = function () {
+        $('.videoLoading').html(`<button  style="font-weight:bold"
+                    class="btn btn-warning mt-2 RelaodVideo" onclick="playVideo()">بارگذاری مجدد</button>`)
+    }
+</script>

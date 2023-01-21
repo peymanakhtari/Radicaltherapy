@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "UserInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/component.css" rel="stylesheet" />
+<style>
+    input.code-input {
+        margin-right: 2px !important;
+        padding: 0
+    }
+
+    input.code-input-readonly {
+        margin-right: 2px !important;
+        padding: 0
+    }
+</style>
+
+<div style="margin-top:6.7rem" class="container ">
+    <div dir="rtl" class="User-information">
+        <label style="font-size:1.2rem;color:green;display:block;text-align:center">
+                ابتدا نام و شماره واتساپ خود را ثبت کنید
+            </label>
+        <form dir="rtl" action="/User/UserInfo" method="post">
+            <label>   نام و نام خانوادگی  </label>
+            <input class="userPanelInput" type="text"  name="name" value="@ViewBag.name" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+            <label >   کد کشور   </label>
+            <fieldset style="width:12rem" dir="ltr" class='number-code'>
+                <div>
+                   
+                    <input readonly="readonly" type='number' class='code-input-readonly' value="0" />
+                    <input readonly="readonly" type='number' class='code-input-readonly' value="0" />
+                    <input type='text' name="c1" class='code-input' value="9" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type='text' name="c2" class='code-input' value="8" oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                </div>
+
+            </fieldset>
+            <label style="margin:8px 0 3px 0;color: red;">   شماره واتساپ   </label>
+
+            <fieldset dir="ltr" class='number-code'>
+                <div>
+                    <input readonly="readonly" type='number' class='code-input-readonly' value="0" />
+                    <input type="number" name="c4" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c5" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c6" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c7" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c8" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c9" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c10" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c11" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c12" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                    <input type="number" name="c13" class='code-input' oninput="setCustomValidity('')" oninvalid="this.setCustomValidity('لطفا پر شود')" required />
+                </div>
+            </fieldset>
+            <input style="margin-top:5px;width:5rem" class="btn btn-success" type="submit" value="ثبت" />
+        </form>
+
+     
+    </div>
+</div>
+
+<script src="~/js/component.js"></script>
+

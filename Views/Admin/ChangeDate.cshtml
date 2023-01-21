@@ -1,0 +1,102 @@
+﻿ 
+@using RadicalTherapy.Utility.Convertor
+@{
+    ViewData["Title"] = "ChangeDate";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+<a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+<br />
+<br />
+
+@foreach (var item in (List<RadicaReserveDatetimes>)ViewBag.dateList)
+{
+    <div dir="rtl" style="font-family:bkoodakbold" class="col-12 col-sm-6 col-lg-3">
+                <div class="radicalreserve-box">
+                    <span class="radicalreserve-box-datetime">@item.DayOfWeek @item.Times[0].ToShamsi1().Day-
+                        @item.MounthOfYear</span>
+                    <div class="radicalreserve-hour">
+
+                        @foreach (var time in item.Times)
+                        {
+                            @if (((List<DateTime>)ViewBag.ReservedTimes).Any(c => c == time))
+                            {
+                                if (time.Minute == 0)
+                                {
+                                    <a style="background:#eb0017" class="hour-fulled"><span >00 : @time.Hour </span> </a>
+
+                                }
+                                else
+                                {
+                                     <a style="background:#eb0017" class="hour-fulled"><span>@time.Minute : @time.Hour </span> </a>
+                                }
+                            }
+                            else
+                            {
+                                if (time.Minute==0)
+                                {
+                                     <a href="#my_modal" data-toggle="modal" data-weekday="@item.DayOfWeek"
+                        data-mounth="@item.MounthOfYear" data-dayofmounth="@time.ToShamsi1().Day"
+                        data-hourofday="00 : @time.Hour" data-datetime="@time"><span>00 : @time.Hour </span> </a>
+                                }
+                                else
+                                {
+                                     <a href="#my_modal" data-toggle="modal" data-weekday="@item.DayOfWeek"
+                        data-mounth="@item.MounthOfYear" data-dayofmounth="@time.ToShamsi1().Day"
+                        data-hourofday="@time.Minute : @time.Hour" data-datetime="@time"><span>@time.Minute : @time.Hour </span> </a>
+                                }
+                               
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+}
+<div class="modal fade" id="my_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="mt-0">
+                    <div class="reseve-modal-info" id="dayOfWeek"></div>
+                    <div class="reseve-modal-info" id="dayofmounth"></div>
+                    <div class="reseve-modal-info" id="monthOfYear"></div>
+                    <div style="font-size:1.2rem" class="reseve-modal-info">  ساعت  <span id="hourofday">  </span>  صبح  </div>
+                </div>
+
+            </div>
+            <form action="/Admin/ChangeDate" method="post">
+                <div class="modal-body">
+                    <input type="datetime" hidden name="datetime" value="" />
+                    <input type="number" name="reserveId" value="@ViewBag.reserveId" hidden />
+                    <div style="font-family:1.2rem;color:red;">در انتخاب زمان تایم خود دقت کنید زیرا امکان تغییر آن وجود ندارد</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success px-5 ml-auto">انتخاب این تایم</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">بستن</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#my_modal').on('show.bs.modal', function (e) {
+        var reserve = $(e.relatedTarget).data('datetime');
+        var mounth = $(e.relatedTarget).data('mounth');
+        var weekkday = $(e.relatedTarget).data('weekday');
+        var dayOfMounth = $(e.relatedTarget).data('dayofmounth');
+        var HourOfDay = $(e.relatedTarget).data('hourofday');
+
+        $(e.currentTarget).find('input[name="datetime"]').val(reserve);
+        $(e.currentTarget).find('div[id="monthOfYear"]').html(mounth);
+        $(e.currentTarget).find('div[id="dayOfWeek"]').html(weekkday);
+        $(e.currentTarget).find('div[id="dayofmounth"]').html(dayOfMounth);
+        $(e.currentTarget).find('span[id="hourofday"]').html(HourOfDay);
+
+
+    });
+</script> 

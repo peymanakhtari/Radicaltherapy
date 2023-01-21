@@ -1,0 +1,27 @@
+﻿@using RadicalTherapy.Data.model
+@model List<Subject>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}<br />
+<br />
+<br />
+<br />
+<br />
+<div class="admin-btn-container text-center" style="margin-left:50px">
+ <a  style="font-size:26px;background-color: white;color:blue" href="@Url.Action("Index","Admin")">صفحه اصلی</a><br /><br />
+<br>
+    @foreach (var item in Model)
+{
+    <a style="font-size:32px" href="@Url.Action("subject",new{subjectid=item.Id})">@item.Tite &nbsp; @item.Sequence</a>
+    <br /><br />
+}
+<br />
+<br />
+<br />
+<br />
+ <a style="font-size:32px;background-color:red" href="@Url.Action("AddNewSubject")">افزودن مورد جدید</a>
+</div>
+
+
+

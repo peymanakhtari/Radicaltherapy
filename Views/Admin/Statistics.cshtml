@@ -1,0 +1,27 @@
+﻿@model List<RadicalTherapy.Models.OsCount>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Statistics</title>
+</head>
+<body>
+    <br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+    <br /><br /><br /><br />
+    <div style="font-size:26px;margin-left:50px">
+        @foreach (var item in Model)
+        {
+
+            <p> @item.OS ------ @item.Count </p>
+        }
+    </div>
+
+
+</body>
+</html>

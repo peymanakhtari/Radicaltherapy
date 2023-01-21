@@ -1,0 +1,44 @@
+﻿@model List<RadicalTherapy.Data.model.CustomerVideo>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CustomerVideo</title>
+    <link href="~/css/StyleSheet-Radical.min.css" rel="stylesheet" />
+    <link href="~/css/Responsive-Radical.min.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+    <br /><br /><br />
+    <a style="font-size:26px" href="@Url.Action("AddCustomerVideo","Admin")"> افزودن ویدیو</a>
+    <br /><br /><br />
+
+    <form action="/Admin/DeleteVideo" method="post">
+
+        <input name="Id" type="text" />
+        <input style="font-size:22px;padding:15px" value="حذف" type="submit" />
+    </form>
+
+    @foreach (var item in Model)
+    {
+        <div  dir="rtl" style="border: 1px black solid; margin: 1rem;" class="customer-video">
+            <p style="margin-left:25px;font-size:25px;text-align: right;color: white;background-color: green;display: inline-block;padding: .4rem 2rem;"> ترتیب: @item.Sequence</p>
+            <p style="margin-left:25px;font-size:25px;text-align: right;background-color: red;display: inline-block;padding: .4rem 2rem;">@item.Id</p>
+            @Html.Raw(item.Link)
+            <div class="description">@item.Description</div>
+            <a style="font-size: 1.5rem;margin: ;1rem" href="/admin/AddCustomerVideo/@item.Id">ویرایش</a>
+        </div>
+
+    }
+
+</body>
+</html>
+
+

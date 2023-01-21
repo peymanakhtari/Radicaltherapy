@@ -1,0 +1,167 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@RenderBody()
+<div align="right" class="comment">
+    @if ((string)ViewBag.type != "پرسش و پاسخ")
+    {
+        <h2 id="subjectComments" style="float:right;">نظرات</h2>
+
+    }
+    else
+    {
+        <h2 style="float:right;">پرسش و پاسخ</h2>
+        <script>
+            $(document).ready(function(){
+                $('#btnComments').css('display','none');
+                $('#subjectTitle').css('display','none');
+            })
+        </script>
+    }
+
+    <br /><br /><br />
+    <div class=" col-10 col-sm-8 lineSeprator"></div>
+</div>
+<p class="commentIsDelete" id="deletedComment">نظر شما حذف شد</p>
+<div dir="rtl">
+    <br />
+
+    <div style="width:100%">
+        @if ((string)ViewBag.type != "پرسش و پاسخ")
+        {
+            <form class="form  mr-4">
+                <input class="form-control text-right" type="text" placeholder=" نام خود را بنویسید " id="username" />
+                <textarea class=" form-control txt-send-comment mt-1 text-right" type="text" rows="3" id="newComment" placeholder="نظر خود را بنویسید"></textarea>
+                <br /><br /><br /><br /><br /><br />
+                <input class="btn-submit button-comments btn-send" type="button" id="AddNewComment" onclick="addComment()" value="ثبت نظر" />
+                <p class="newCommentValidation" id="NewCmtNameValidation" style="display:none;">نام خود را وارد کنید</p>
+                <p class="newCommentValidation" id="NewCmtTextValidation" style="display:none; ">متن کامنت را بنویسید</p>
+            </form>
+
+        }
+        else
+        {
+            <form class="form  mr-4">
+                <input class="form-control text-right" type="text" placeholder=" نام خود را بنویسید " id="username" />
+                <textarea class=" form-control txt-send-comment mt-1 text-right" type="text" rows="3" id="newComment" placeholder="سوال خود را بنویسید"></textarea>
+                <br /><br /><br /><br /><br /><br />
+                <input class="btn-submit button-comments btn-send" type="button" id="AddNewComment" onclick="addComment()" value="ثبت سوال" />
+                <p class="newCommentValidation" id="NewCmtNameValidation" style="display:none;">نام خود را وارد کنید</p>
+                <p class="newCommentValidation" id="NewCmtTextValidation" style="display:none; ">متن سوال را بنویسید</p>
+            </form>
+        }
+
+    </div>
+    <br /><br />
+    @foreach (var item in Model)
+    {
+        //col - 10 col - md - 9 col - lg - 7
+        <div dir="rtl" class="comment-box" id="comment-@item.Id">
+            @for (int i = 1; i <= item.Text.Length; i++)
+            {
+                if (i < item.Text.Length)
+                {
+                    <div class="comment-box-item">
+                        <p>@item.UserName :</p>
+                        <div dir="rtl" class="comment text" id="TextCmt-@item.Id-@i"> @item.Text[i - 1] </div>
+                    </div>
+                }
+                else if (item.Status)
+                {
+                    <div class="comment-box-item">
+                        <p>@item.UserName :</p>
+                        <div class="comment text" id="TextCmt-@item.Id-Last">@item.Text[i - 1] </div>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="comment-box-item">
+                        <p>@item.UserName :</p>
+                        <div class="comment text">
+                            <div id="TextCmt-@item.Id-Last"> @item.Text[i - 1] </div>
+                            <button class="btn-deleteComment button-comments" type="button" id="askDelte-@item.Id" style="display:none" onclick="askDelete(this.id)">حذف</button>
+                            <div id="deleteCmt-@item.Id" class="deleteCmt" style="display:none;margin-top:8px">
+                                <p style="display:inline">این نظر حذف شود؟</p>
+                                <button class="button-comments" style="display:inline" id="delete-@item.Id" onclick="deleteComment(this.id)">بله</button>
+                                <button class="button-comments" style="display:inline" id="notDetlete-@item.Id" onclick="NotDelete(this.id)">خیر</button>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                if (i < item.Text.Length)
+                {
+                    <div class="comment-box-item">
+                        <p>علی زارع :</p>
+                        <div class="comment ans" id="TextAns-@item.Id-@i"> @item.Answer[i - 1]</div>
+                    </div>
+                }
+                else
+                {
+                    if (item.Status)
+                    {
+
+                        <div class="comment-box-item">
+                            <p>علی زارع :</p>
+                            <div class="comment ans" id="TextAns-@item.Id-Last">@item.Answer[i - 1]</div>
+                        </div>
+                    }
+                }
+
+            }
+            <div style="display:none" id="commentResponse-@item.Id">
+                @if (item.Status)
+                {
+                    <form class="form Answer-Comment">
+                        <textarea style="width:100%" class=" form-control txt-send-comment" type="text" rows="3" id="updateText-@item.Id" placeholder="جواب این کامنت را بنویسید"></textarea>
+                        <br /><br /><br /><br />
+                        <input class="btn-submit button-comments btn-send mt-1" type="button" id="updateComment-@item.Id" onclick="UpdateComment(this.id)" value="ثبت" />
+                        <p id="newtextValidation-@item.Id" style="display:none;color:red;">متن کامنت را بنویسید</p>
+                    </form>
+
+                }
+                @if (!item.Status)
+                {
+
+                    <div style="display:none" id="hasAccess-@item.Id" class="hasAccess comment-reply-status">
+                        پاسخ این کامنت برای شما ارسال میشود
+                    </div>
+                    <div class="giveAccess" id="giveAccess-@item.Id" style="display:none">
+                        <p class="comment-reply-status">برای دریافت پاسخ این کامنت  بزن رو </p>
+                        <a class="btn-allow" onclick="requestNotificationAccess(this.id)" id="Prompt-@item.Id">allow</a>
+                    </div>
+                    <div class="Isblock" id="Isblock-@item.Id" style="display:none">
+                        <p class="comment-reply-status">نتیفیکیشن شما غیر فعال است و پاسخ کامنت را دریافت نمیکنید</p>
+                        <input class="active-notification button-comments" type="button" id="AccessBlock-@item.Id" onclick="AccessIsBlock(this.id)" value="فعالسازی نوتیفیکیشن" />
+                    </div>
+                }
+            </div>
+
+
+        </div>
+        <div class=" col-10 col-sm-10 commentSeprator"></div>
+
+    }
+
+</div>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<script src="~/js/Layout-Subject.js"></script>
+

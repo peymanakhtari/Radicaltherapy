@@ -1,0 +1,104 @@
+﻿@using RadicalTherapy.Data.model
+
+@{
+    ViewData["Title"] = ViewBag.titleName;
+    ViewData["metaDescription"] = ViewBag.decription;
+    Layout = "~/Views/Shared/Layout_Subjects.cshtml";
+}
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"> برو بالا<div class="scrollTop">&#10137;</div></button>
+<div style="margin-top: 7rem;" class="container subjectPag">
+
+
+    <h1 id="subjectTitle">@ViewBag.titleName</h1><br>
+    <div dir="rtl">
+        @foreach (var item in (List<Content>)ViewBag.contents)
+        {
+            if (item.Type == 1)
+            {
+                <button id="btn-@item.Id" onclick="scrollToTilte(this.id)" class="btn  btnSubjectTitl">@item.Text</button>
+            }
+        }
+        <button onclick="gotoComments()" Id="btnComments" class=" btnComments btn btn-danger">نظرات</button>
+    </div>
+    @foreach (var item in (List<Content>)ViewBag.contents)
+    {
+        if (item.Type == 1)
+        {
+            <div id="title-@item.Id" class="sub-title">
+                <h2>@item.Text</h2>
+            </div>
+        }
+        else if (item.Type == 2)
+        {
+            <div class="sub-text">
+                @if (item.Text != null)
+                {
+                    <p dir="rtl">@Html.Raw(item.Text)</p>
+                }
+            </div>
+        }
+        else if (item.Type == 3)
+        {
+            <div class="sub-img w-100">
+                <img class="col-12  col-md-9 col-xl-7 mx-auto"
+             src="@System.Text.Encoding.Default.GetString(item.Img)" alt="@item.Text" />
+            </div>
+        }
+        else if (item.Type == 4)
+        {
+            <div class="sub-video">
+                <p dir="rtl" class="turnOnVpn">
+                    برای مشاهده ویدیو فیلتر شکن خود را روشن کنید
+                    <span class="videoLoading" style="font-family:shabnam ;font-weight:bold;" dir="ltr">
+                        <button dir="rtl" style="min-width:8rem;font-weight:bold;" class="btn btn-success">
+                            در حال بارگذاری  <span style="margin-bottom:6px;margin-right:4px" class="spinner-border spinner-border-sm"></span>
+                        </button>
+                    </span>
+                </p>
+                <div>@Html.Raw(item.Text)</div>
+            </div>
+        }
+
+    }
+</div>
+<br>
+<br>
+<script>
+    function scrollToTilte(val) {
+        var elemId = 'title-' + val.split('-')[1];
+
+        var element = document.getElementById(elemId);
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    function gotoComments() {
+        var element = document.getElementById("subjectComments");
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    window.onload = function () {
+        $('.videoLoading').html(`<button  style="font-weight:bold"
+                    class="btn btn-warning mt-2 RelaodVideo" onclick="playVideo()">بارگذاری مجدد</button>`)
+    }
+ 
+
+</script>
+<input id="subjectId" value="@ViewBag.subjectId" hidden />

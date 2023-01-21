@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "ActiveNotification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<input type="button" onclick="requestNotification()" style="margin:auto;display:block;width:40%;height:60px;background-color:#61fffa;font-family:'Iranian Sans';font-weight:bold" value="فعالسازی نتیفیکیشن" />
+
+<div class="teach-active-notification">
+    <p dir="rtl" style="text-align:center;font-size:22px"> ابتدا سه مرحله زیر را انجام دهید سپس روی <span style="font-weight:bold;color:#1ac4bf">دکمه بالا</span> بزنید </p>
+    <p dir="rtl"> 1- روی علامت قفل کنار وبسایت را لمس کنید </p>
+    <img class="" src="~/img/teach-noti1.jpg" />
+    <p dir="rtl">2-سپس <span>permissions</span> یا مجوز ها را انتخاب کنید. </p>
+    <img src="~/img/teach-noti2.jpg" />
+    <p dir="rtl"> 3-سپس دکمه <span>reset</span> یا ریست را بزنید   </p>
+    <img src="~/img/teach-noti3.jpg" />
+</div>
+<br />
+<br />
+<br />
+<br />
+
+<script>
+    function requestNotification() {
+
+        Notification.requestPermission(function (status) {
+
+            if (status == "granted") {
+                IsNotificatinAllow();
+            } 
+        });
+    }
+
+    function IsNotificatinAllow() {
+        navigator.serviceWorker.register("/ServiceWorker.js")
+            .then((reg) => {
+                reg.pushManager.getSubscription().then(function (sub) {
+                    if (sub === null) {
+                        reg.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            /**/
+                            applicationServerKey: "BI3xMbriuQ8IReKLWBZOADVA0-4hSWjDUnc0q3amFNhrJc06S4uBavwoRkEWzcagqr6YyBvOZAbv8hNvxGNUO_Y"
+                            /**/
+                        }).then(function (sub) {
+                            var auth = arrayBufferToBase64(sub.getKey("auth"));
+                            var p256dh = arrayBufferToBase64(sub.getKey("p256dh"));
+                            var endpoint = sub.endpoint
+                            localStorage.setItem('auth000', auth);
+                            localStorage.setItem('p256dh000', p256dh);
+                            localStorage.setItem('endpoint000', endpoint);
+
+                        }).catch(function (e) {
+                            console.error("Unable to subscribe to push", e);
+                        });
+                    } else {
+                        var auth = arrayBufferToBase64(sub.getKey("auth"));
+                        var p256dh = arrayBufferToBase64(sub.getKey("p256dh"));
+                        var endpoint = sub.endpoint
+                        localStorage.setItem('auth000', auth);
+                        localStorage.setItem('p256dh000', p256dh);
+                        localStorage.setItem('endpoint000', endpoint);
+                    }
+                });
+            })
+    }
+    function arrayBufferToBase64(buffer) {
+        var binary = '';
+        var bytes = new Uint8Array(buffer);
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    }
+</script>

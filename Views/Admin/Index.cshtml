@@ -1,0 +1,45 @@
+﻿
+@model dynamic
+@{
+    Layout = "/views/shared/_layout_admin.cshtml";
+
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="admin-btn-container text-center" style="margin-left:50px">
+    
+    <a style="font-size:32px" href="@Url.Action("FutureRadicalReserve")">رزرو های آینده رادیکال تراپی</a>
+    <br /><br />
+    <a style="font-size:32px" href="@Url.Action("FillRadicalReserves")">پر کردن تایم رادیکال تراپی</a>
+    <br /><br />
+    <a style="font-size:32px" href="@Url.Action("FilterRadicalReserve")">فیلتر تایم های رادیکال تراپی</a>
+    <br /><br />
+       
+   
+    <a style="font-size:32px" href="@Url.Action("NewComments")">کامنت های جدید</a>
+    <br />
+    <br />
+    <a style="font-size:32px" href="@Url.Action("DeleteComment")">حذف کامنت</a>
+    <br />
+    <br />
+
+    <a style="font-size:32px" href="@Url.Action("SelectReserve")">رزرو بین تاریخ</a>
+    <br />
+    <br />
+    <a style="font-size:32px" href="@Url.Action("customerVideo")">ویدیو مراجعین</a>
+    <br />
+    <br />
+    <a style="font-size:32px" href="@Url.Action("Statistics")">آمار بازدید</a>
+    <br /><br />
+  <a style="font-size:32px" href="@Url.Action("Index","AdminMainPage")">محتوای صفحه اصلی</a>
+    <br /><br />
+</div>
+
+
+
+

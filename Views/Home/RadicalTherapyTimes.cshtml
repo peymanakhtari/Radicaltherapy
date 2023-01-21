@@ -1,0 +1,116 @@
+﻿@using RadicalTherapy.Utility.Convertor
+
+@{
+    ViewData["Title"] = "لیست تایم های رادیکال تراپی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 ">
+            <h1 style="margin-bottom:01rem" class="text-center mt-4 radicalTherapyTitle">لیست تایم های
+                رادیکال تراپی</h1>
+            <p class="redIsReserved"> تایم های با رنگ قرمز اشغال شده اند </p>
+        </div>
+        @foreach (var item in (List<RadicaReserveDatetimes>)ViewBag.dateList)
+        {
+            <div dir="rtl" style="font-family:bkoodakbold" class="col-12 col-sm-6 col-lg-3">
+                <div class="radicalreserve-box">
+                    <span class="radicalreserve-box-datetime">@item.DayOfWeek @item.Times[0].ToShamsi1().Day-
+                        @item.MounthOfYear</span>
+                    <div class="radicalreserve-hour">
+
+                        @foreach (var time in item.Times)
+                        {
+                            @if (((List<DateTime>)ViewBag.ReservedTimes).Any(c => c == time))
+                            {
+                                if (time.Minute == 0)
+                                {
+                                    <a style="background:#eb0017" class="hour-fulled"><span >00 : @time.Hour </span> </a>
+
+                                }
+                                else
+                                {
+                                     <a style="background:#eb0017" class="hour-fulled"><span>@time.Minute : @time.Hour </span> </a>
+                                }
+                            }
+                            else
+                            {
+                                if (time.Minute==0)
+                                {
+                                     <a href="#my_modal" data-toggle="modal" data-weekday="@item.DayOfWeek"
+                        data-mounth="@item.MounthOfYear" data-dayofmounth="@time.ToShamsi1().Day"
+                        data-hourofday=" 00 : @time.Hour @Html.Raw((time.Hour<12) ? "صبح" : "")" data-datetime="@time"><span> 00 : @time.Hour </span> </a>
+                                }
+                                else
+                                {
+                                     <a href="#my_modal" data-toggle="modal" data-weekday="@item.DayOfWeek"
+                        data-mounth="@item.MounthOfYear" data-dayofmounth="@time.ToShamsi1().Day"
+                        data-hourofday="@time.Minute : @time.Hour @Html.Raw((time.Hour<12) ? "صبح" : "")" data-datetime="@time"><span>@time.Minute : @time.Hour </span> </a>
+                                }
+                               
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        }
+        <div dir="rtl" class="modal fade" id="my_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <div class="mt-0">
+                            <div class="reseve-modal-info" id="dayOfWeek"></div>
+                            <div class="reseve-modal-info" id="dayofmounth"></div>
+                            <div class="reseve-modal-info" id="monthOfYear"></div>
+                            <div class="reseve-modal-info"> ساعت <span id="hourofday"> </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <form action="" method="post">
+                    </form>
+                    <form dir="rtl" id="MyForm" class="form" method="post" action="/Home/LoginMethod">
+                        <input type="datetime" hidden name="datetime" value="" />
+                        <div class="form-group">
+                            <label class="lbl-username mt-2"> لطفا شماره همراه خود را وارد کنید</label>
+                            <input type="number" id="inputUsername" style="font-family: Arial, Helvetica, sans-serif;"
+                                placeholder="09123456789" class="form-control txt-username" name="username" />
+                            <input hidden type="number" name="sms" value="1" />
+                        </div>
+                        <span class="d-none" style="color:red;margin-right:8px">نامعتبر</span>
+                        <br /><br />
+                        <input id="submitbtn" type="button" onclick="replacebtnMobile()" class="btn=submit-username btn btn-success"
+                            value="تایید" />
+                        <button id="submitbtnWaiting" style="min-width:8rem;display:none" class="btn btn-success"
+                            disabled>
+                            کمی صبر کنید <span style="margin-bottom:3px;margin-right:4px"
+                                class="spinner-border spinner-border-sm "></span>
+                        </button>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#my_modal').on('show.bs.modal', function (e) {
+        var reserve = $(e.relatedTarget).data('datetime');
+        var mounth = $(e.relatedTarget).data('mounth');
+        var weekkday = $(e.relatedTarget).data('weekday');
+        var dayOfMounth = $(e.relatedTarget).data('dayofmounth');
+        var HourOfDay = $(e.relatedTarget).data('hourofday');
+
+        $(e.currentTarget).find('input[name="datetime"]').val(reserve);
+        $(e.currentTarget).find('div[id="monthOfYear"]').html(mounth);
+        $(e.currentTarget).find('div[id="dayOfWeek"]').html(weekkday);
+        $(e.currentTarget).find('div[id="dayofmounth"]').html(dayOfMounth);
+        $(e.currentTarget).find('span[id="hourofday"]').html(HourOfDay);
+    });
+</script>

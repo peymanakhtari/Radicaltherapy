@@ -1,0 +1,53 @@
+﻿@using RadicalTherapy.Data.model
+@model List<Subject>
+@{
+    ViewData["Title"] = "رادیکال تراپی - علی زارع";
+    ViewData["metaDescription"] = "درمان بیماریهای ذهنی روانی به روش حذف بار منفی خاطرات آزاردهنده گذشته";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<style>
+    mark.a {
+        color: red;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous">
+</script>
+<div style="text-align: center;padding-top: 80px;">
+    <input style="text-align: center;font-family: Shabnam-Bold;" class="col-8 col-sm-7 col-md-5 col-lg-4 search-box" type="text" id="myInput" onkeyup="myFunction()" placeholder="دنبال چه موضوعی هستی؟ اینجا بنویس" title="Type in a name">
+</div>
+<div dir="rtl" id="loader">
+    <p class="isLoading">درحال بارگذاری</p>
+    <p class="LoadingSpinner">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </p>
+</div>
+<ul id="myUL" style="padding: 0;float:right;display: none;" class="main ">
+    @foreach (var item in Model)
+    {
+        <li class="main-card">
+            <a href=@Url.Action("Index", "Subjects",new {id=@item.English})>
+                <h3> @item.Tite</h3>
+                <div>
+                    <img src="~/UploadImage/subject/@item.CoverPic" alt="@item.Tite">
+                    <p>
+                        @if (item.SmallText != null)
+                        {
+                            @Html.Raw(item.SmallText.Replace("*","</br>"))
+                        }
+                    </p>
+
+                </div>
+            </a>
+        </li>
+    }
+
+
+</ul>
+<br />
+<br />
+<script src="~/js/home_index.js"></script>

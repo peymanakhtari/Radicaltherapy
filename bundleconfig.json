@@ -1,0 +1,50 @@
+[
+  {
+    "outputFileName": "wwwroot/css/Responsive-Radical.min.css",
+    "inputFiles": [
+      "wwwroot/css/Responsive-Radical.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/StyleSheet-Radical.min.css",
+    "inputFiles": [
+      "wwwroot/css/StyleSheet-Radical.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/jquery-radical.min.js",
+    "inputFiles": [
+      "wwwroot/js/jquery-radical.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Layout-Subject.min.js",
+    "inputFiles": [
+      "wwwroot/js/Layout-Subject.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Reserve_index.min.js",
+    "inputFiles": [
+      "wwwroot/js/Reserve_index.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/content/Jquery.min.js",
+    "inputFiles": [
+      "wwwroot/content/Jquery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/content/bootstrap.min.js",
+    "inputFiles": [
+      "wwwroot/content/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/content/bootstrap.min.css",
+    "inputFiles": [
+      "wwwroot/content/bootstrap.css"
+    ]
+  }
+]

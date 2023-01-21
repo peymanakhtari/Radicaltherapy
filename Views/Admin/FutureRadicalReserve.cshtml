@@ -1,0 +1,87 @@
+﻿@model List<RadicalTherapy.Models.RadicalReserveAdmin>
+@using RadicalTherapy.Utility.Convertor;
+@{
+    ViewData["Title"] = "FutureRadicalReserve";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+<a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+<br />
+<br />
+@foreach (var item in Model)
+{
+    <div id="@item.RadialReserve.ID" class="not-confirmed">
+        <form action="/Admin/SendCustomMassageToUser" method="post">
+
+            <br />
+            <div style="font-size:1.2rem;">
+                <label style="background-color:darkgrey;padding:3px;"> @item.RadialReserve.ID</label>
+                <label style="background-color:red;padding:3px;color:white"> @item.RadialReserve.Refid</label>
+                <label style="background-color:aqua;padding:3px;"> @item.RadialReserve.User.Name</label>
+                <label> user: <span style="">@item.RadialReserve.User.UserName</span></label>
+                <label> WApp: <span style="background-color: orange;color: white;">@item.RadialReserve.User.WhatsApp</span></label>
+                <label dir="rtl" style="background-color:burlywood;padding:3px;"> @item.RadialReserve.DateTime.ToShamsi1()</label>
+            </div>
+
+            <a style="color:white;background-color:darkviolet;font-size:1.3rem" asp-action="ChangeDate" asp-controller="Admin" asp-route-reserveId="@item.RadialReserve.ID">تغییر تاریخ</a>
+            <a style="font-size:1.3rem" href="@item.WhatsAppLink1">چت واتساپ1</a>
+            <a style="font-size:1.3rem" href="@item.WhatsAppLink2">چت واتساپ2</a>
+            <input type="submit" class="confirmResept" style="background-color:green;margin:4px" value="ارسال" />
+
+            <textarea name="massage" style="width:60%;font-size:1.2rem;margin-top: 5px;"></textarea>
+            <input type="number" name="userid" value="@item.RadialReserve.User.ID" hidden />
+        </form>
+        <form action="/Admin/ChangeUserWhatsappnumber" method="post">
+            <input type="number" name="userId" value="@item.RadialReserve.User.ID" hidden />
+            <input type="text" name="whatsApp" placeholder="واتساپ" />
+            <input type="submit" name="name" value="ثبت" />
+        </form>
+    </div>
+}
+
+<br />
+<br />
+<br />
+<br />
+<div style="margin-left:2rem">
+    <p style="font-size:22px;margin-right:20px">نام:@@ <br />روز هفته :# <br />ماه:% <br /> عدد روز:~ <br />عدد ساعت:! <br />عدد دقیقه:* <br />خط بعد:$</p>
+
+
+    <form action="/Admin/SetWhatsAppURLRadicaReserve" method="post">
+        <textarea style="width:730px;font-size:22px;height:100px" rows="2" name="text"></textarea>
+        <input type="submit" style="padding:10px ;font-size:20px" value="واتس آپ1" />
+    </form>
+    <p>@ViewBag.whatsappText</p>
+</div>
+
+<br />
+<br />
+
+
+<form style="margin-left:2rem" action="/Admin/DeleteRadicalReserve">
+    <input type="text" name="returnAction" value="FutureRadicalReserve" hidden />
+    <input type="text" name="reserveId" value="" />
+    <input type="submit" value="حذف" />
+</form>
+<br />
+<br />
+<form action="/Admin/SetWhatsAppURLRadicaReserve2" method="post" style=" margin-left:2rem">
+    <textarea style="width:730px;font-size:22px;height:100px" rows="2" name="text"></textarea>
+    <input type="submit" style="padding:10px ;font-size:20px" value="واتس آپ2" />
+    <p>@ViewBag.whatsappText2</p>
+</form>
+
+<script>
+    $(document).ready(function () {
+
+        const queryString = window.location.search;
+    const parameters = new URLSearchParams(queryString);
+    const value = parameters.get('id');
+        $('html, body').animate({
+            scrollTop: $('#'+value).offset().top
+        }, 'slow');
+    });
+
+              const queryString = window.location.search;
+    const parameters = new URLSearchParams(queryString);
+    const value = parameters.get('id');
+</script>

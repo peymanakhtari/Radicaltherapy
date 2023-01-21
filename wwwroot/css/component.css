@@ -1,0 +1,100 @@
+﻿*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --spacing: 8px;
+    --hue: 400;
+    --background1: hsl(0, 0%, 91%);
+    --background2: hsl(0, 0%, 95%);
+    --background3: hsl(0, 0%, 96%);
+    --brand1: hsl(var(--hue) 80% 60%);
+    --text1: hsl(0, 0%, 0%);
+    --text2: hsl(0, 0%, 0%);
+}
+
+code {
+    background: var(--background3);
+}
+
+@media only screen and (max-width: 600px) {
+}
+
+a {
+    color: var(--brand1);
+    text-decoration: none;
+}
+
+.number-code > div {
+    display: flex;
+}
+
+    .number-code > div > input:not(:last-child) {
+        margin-right: calc(var(--spacing) * 2);
+    }
+
+.content-area {
+    display: flex;
+    flex-direction: column;
+    background: var(--background2);
+    padding: var(--spacing);
+    border-radius: var(--spacing);
+}
+
+    .content-area p {
+        color: var(--text2);
+        font-size: 0.8em;
+    }
+
+form {
+    background-color: rgb(255, 255, 255);
+    font-family:bkoodakbold
+}
+
+    form input.code-input {
+        font-size: 1.5em;
+        width: 1em;
+        text-align: center;
+        flex: 1 0 1em;
+    }
+
+     .code-input-readonly {
+        font-size: 1.5em;
+        width: 1em;
+        text-align: center;
+        flex: 1 0 1em;
+    }
+
+
+    form input {
+        padding: var(--spacing);
+        border-radius: calc(var(--spacing) / 2);
+        color: var(--text1);
+        background: var(--background1);
+        border: 0;
+        border: 4px solid transparent;
+    }
+
+        form input:invalid {
+            box-shadow: none;
+        }
+
+        form input:focus {
+            outline: none;
+            border: 4px solid var(--brand1);
+            background: var(--background3);
+        }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

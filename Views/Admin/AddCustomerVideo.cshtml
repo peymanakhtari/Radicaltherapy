@@ -1,0 +1,42 @@
+﻿@model RadicalTherapy.Data.model.CustomerVideo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddCustomerVideo</title>
+    <link href="~/css/StyleSheet-Radical.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <br /><br /><br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a><br /><br />
+    <a style="font-size:26px" href="@Url.Action("customerVideo")">برگشت</a>
+    <br /><br />
+    <form action="/Admin/AddOrEditVideo" method="post">
+        <div style="width: 20rem;">
+           <input type="number" value="@Model.Id" name="id" hidden/>
+            link
+            <textarea name="LinkText" style="width: 28rem;height: 8rem ;" class="customer-video-textArea" id="linkText"
+                required>@Model.Link</textarea><br />
+            توضیحات
+            <textarea name="Description" class="customer-video-textArea" style="width: 28rem;height: 8rem ;"
+                id="description" required>@Model.Description</textarea><br /><br>
+            ترتیب
+            <input type="number" name="Sequence" value="@Model.Sequence"><br><br>
+
+            <input style="font-size:22px ;padding:15px" type="submit" value="ثبت" />
+
+        </div>
+
+    </form>
+
+</body>
+
+</html>

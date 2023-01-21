@@ -1,0 +1,85 @@
+﻿@using RadicalTherapy.Data.model
+@using RadicalTherapy.Utility.Convertor
+
+@{
+    ViewData["Title"] = "FillpreReservation";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+<link rel="stylesheet" href="~/css/stylesheet-radical.css">
+   <br /><br />
+    <a style="font-size:26px" href="@Url.Action("reserves","admin")">بازگشت</a>
+    <br>
+<div dir="rtl">
+    <div class="reserve-container" style="text-align: center; width: 100%;">
+
+        @for (int i = 0; i < 14; i++)
+        {
+            DateTime DATE = DateTime.Now.AddDays(i + 1);
+
+            string dayofweek = DateTool.Dayofweek(DATE);
+
+            if (i == 0)
+            {
+                dayofweek = "فردا";
+            }
+
+            string monthofyear = DateTool.MonthOfYear(DATE.ToShamsi1());
+
+            string date = DATE.ToShamsi1().Day.ToString() + " - "
+            + monthofyear;
+            List<DateTime> hours = new List<DateTime>();
+            hours.Add(new DateTime(DATE.Year, DATE.Month, DATE.Day, 14, 0, 0));
+            hours.Add(new DateTime(DATE.Year, DATE.Month, DATE.Day, 14, 30, 0));
+            hours.Add(new DateTime(DATE.Year, DATE.Month, DATE.Day, 15, 0, 0));
+            hours.Add(new DateTime(DATE.Year, DATE.Month, DATE.Day, 15, 30, 0));
+
+
+            <div dir="ltr" class="reserve-box col-9 col-sm-5 col-lg-3">
+                <p> @dayofweek &nbsp&nbsp @date</p>
+                @foreach (var item in hours)
+                {
+
+                    if (((List<ReserveAdmin2>)ViewBag.DateTemplates).Any(c => c.Reserve.Datetime == item) || item < DateTime.Now)
+                    {
+                        if (((List<ReserveAdmin2>)ViewBag.DateTemplates).Where(c => c.Reserve.Datetime == item).FirstOrDefault().Question.q1 == 1000)
+                        {
+                            if (item.Minute == 0)
+                            {
+                                <a href="@Url.Action("FreePreReservation",new {datetime=@item})" style="background-color: green;" class="hour"><span>@item.Hour</span> </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("FreePreReservation",new {datetime=@item})" style="background-color: green;" dir="ltr" class="hour"><span>@item.Hour : @item.Minute</span> </a>
+                            }
+                        }
+                        else
+                        {
+                            if (item.Minute == 0)
+                            {
+                                <a class="hour-fulled"><span>@item.Hour</span> </a>
+                            }
+                            else
+                            {
+                                <a dir="ltr" class="hour-fulled"><span>@item.Hour : @item.Minute</span> </a>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (item.Minute == 0)
+                        {
+                            @Html.ActionLink($"{item.Hour}", "AdminFillpreReservation", new { datetime = item }, new { @class = "hour" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink($"{item.Hour} : {item.Minute}", "AdminFillpreReservation", new { datetime = item }, new { @class = "hour", @dir = "ltr" })
+                        }
+                    }
+                }
+
+            </div>
+
+        }
+    </div>
+</div>
+

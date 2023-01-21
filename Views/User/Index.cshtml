@@ -1,0 +1,217 @@
+﻿@using RadicalTherapy.Models
+@using RadicalTherapy.Utility.Convertor
+@using RadicalTherapy.Data.model
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rejectedReserve = (RadicalReserve)ViewBag.Rstatus10;
+}
+<link href="~/css/component.css" rel="stylesheet" />
+<style>
+    input.code-input {
+        margin-right: 2px !important;
+        padding: 0
+    }
+
+    input.code-input-readonly {
+        margin-right: 2px !important;
+        padding: 0
+    }
+</style>
+<div style="margin-top:6.7rem" class="container ">
+    <div dir="rtl" class="User-information shadow">
+        <label class="user-lable">نام : @ViewBag.Name </label>
+        <label class="user-lable">نام کاربری شما : @ViewBag.UserName </label>
+        <label class="">شماره واتساپ : @ViewBag.WhatsApp </label>
+        <a asp-action="UserInfo" asp-controller="User" class="btn btn-secondary">ویرایش</a>
+        <br />
+
+        <div class="radicalreserve-time-list mb-2">لیست تایم های شما</div>
+        @if (((List<RadicalReserve>)ViewBag.RadicalTherapyTimes).Count == 0)
+        {
+            <div class="bg-dark d-inline-block px-4 py-1" style="color:white;border-radius:2px">
+                شما تا به حال تایمی را رزرو
+                نکرده اید
+            </div>
+        }
+        @foreach (var item in (List<RadicalReserve>)ViewBag.RadicalTherapyTimes)
+        {
+            if (item.DateTime > DateTime.Now)
+            {
+                if (item.DateTime.Minute == 0)
+                {
+                    <div class="radicalreserve-datetime">
+                        <span>
+                            @DateTool.Dayofweek(item.DateTime.ToShamsi1())
+                            @item.DateTime.ToShamsi1().Day @DateTool.MonthOfYear(item.DateTime.ToShamsi1()) 00 : @item.DateTime.Hour
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="radicalreserve-datetime">
+                        <span>
+                            @DateTool.Dayofweek(item.DateTime.ToShamsi1())
+                            @item.DateTime.ToShamsi1().Day @DateTool.MonthOfYear(item.DateTime.ToShamsi1())@item.DateTime.Minute : @item.DateTime.Hour
+                        </span>
+                    </div>
+                }
+
+            }
+
+        }
+        @foreach (var item in (List<RadicalReserve>)ViewBag.RadicalTherapyTimes)
+        {
+            if (item.DateTime < DateTime.Now)
+            {
+                if (item.DateTime.Minute == 0)
+                {
+                    <div class="radicalreserve-datetime">
+                        <span style="background-color:#aba9a9">
+                            @DateTool.Dayofweek(item.DateTime.ToShamsi1())
+                            @item.DateTime.ToShamsi1().Day @DateTool.MonthOfYear(item.DateTime.ToShamsi1()) 00 : @item.DateTime.Hour
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="radicalreserve-datetime">
+                        <span style="background-color:#aba9a9">
+                            @DateTool.Dayofweek(item.DateTime.ToShamsi1())
+                            @item.DateTime.ToShamsi1().Day @DateTool.MonthOfYear(item.DateTime.ToShamsi1())@item.DateTime.Minute : @item.DateTime.Hour
+                        </span>
+                    </div>
+                }
+                @*     <div class="radicalreserve-datetime"><span
+                    style="background-color:#aba9a9">@DateTool.Dayofweek(item.DateTime.ToShamsi1())
+                    @item.DateTime.ToShamsi1().Day @DateTool.MonthOfYear(item.DateTime.ToShamsi1()) @item.DateTime.Hour
+                    </span></div>*@
+            }
+
+        }
+        <a asp-controller="User" asp-action="LogOut" style="position:absolute;left:.5rem;top:.5rem"
+           class="btn btn-danger">خروج</a>
+
+    </div>
+    <div dir="rtl" style="font-family:bkoodakbold" class="row mt-3">
+
+        @foreach (var item in (List<RadicaReserveDatetimes>)ViewBag.dateList)
+        {
+            <div dir="rtl" style="font-family:bkoodakbold" class="col-12 col-sm-6 col-lg-3">
+                <div class="radicalreserve-box">
+                    <span class="radicalreserve-box-datetime">
+                        @item.DayOfWeek @item.Times[0].ToShamsi1().Day-
+                        @item.MounthOfYear
+                    </span>
+                    <div class="radicalreserve-hour">
+
+                        @foreach (var time in item.Times)
+                        {
+                            @if (((List<DateTime>)ViewBag.ReservedTimes).Any(c => c == time))
+                            {
+                                if (time.Minute == 0)
+                                {
+                                    <a style="background:#eb0017" class="hour-fulled"><span>00 : @time.Hour </span> </a>
+
+                                }
+                                else
+                                {
+                                    <a style="background:#eb0017" class="hour-fulled"><span>@time.Minute : @time.Hour </span> </a>
+                                }
+                            }
+                            else
+                            {
+                                if (time.Minute == 0)
+                                {
+                                    <a href="#my_modal" data-toggle="modal" data-weekday="@item.DayOfWeek"
+                       data-mounth="@item.MounthOfYear" data-dayofmounth="@time.ToShamsi1().Day"
+                       data-hourofday="00 : @time.Hour @Html.Raw((time.Hour<12) ? "صبح" : "")" data-datetime="@time"><span>00 : @time.Hour </span> </a>
+                                }
+                                else
+                                {
+                                    <a href="#my_modal" data-toggle="modal" data-weekday="@item.DayOfWeek"
+                       data-mounth="@item.MounthOfYear" data-dayofmounth="@time.ToShamsi1().Day"
+                       data-hourofday="@time.Minute : @time.Hour @Html.Raw((time.Hour<12) ? "صبح" : "")" data-datetime="@time"><span>@time.Minute : @time.Hour </span> </a>
+                                }
+
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        }
+
+        <div class="modal fade" id="my_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <div class="mt-0">
+                            <div class="reseve-modal-info" id="dayOfWeek"></div>
+                            <div class="reseve-modal-info" id="dayofmounth"></div>
+                            <div class="reseve-modal-info" id="monthOfYear"></div>
+                            <div style="font-size:1.2rem" class="reseve-modal-info">
+                                ساعت <span id="hourofday"> </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <form action="/RadicalTherapyTime/ConfirmRules">
+                        <div class="modal-body">
+                            <input type="datetime" hidden name="datetime" value="" />
+                            <div style="font-family:1.2rem;color:red;">
+                                در انتخاب زمان تایم خود دقت کنید زیرا امکان تغییر
+                                آن وجود ندارد
+                            </div>
+                         
+                        </div>
+                        <div class="modal-footer">
+                            <input id="btnChooseThisTime" value="انتخاب این تایم" type="submit"
+                                   onclick="removebtnChooseThisTime()" class="btn btn-success px-5 ml-auto" />
+                            <button dir="rtl" id="submitbtnWaiting"
+                                    style="min-width:8rem;font-family:Shabnam;font-weight:bold;"
+                                    class="btn btn-success ml-auto d-none" disabled>
+                                کمی صبر کنید <span style="margin-bottom:6px;margin-right:4px"
+                                                   class="spinner-border spinner-border-sm "></span>
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="location.reload()">بستن</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<script>
+        $('#my_modal').on('show.bs.modal', function (e) {
+            var reserve = $(e.relatedTarget).data('datetime');
+            var mounth = $(e.relatedTarget).data('mounth');
+            var weekkday = $(e.relatedTarget).data('weekday');
+            var dayOfMounth = $(e.relatedTarget).data('dayofmounth');
+            var HourOfDay = $(e.relatedTarget).data('hourofday');
+
+            $(e.currentTarget).find('input[name="datetime"]').val(reserve);
+            $(e.currentTarget).find('div[id="monthOfYear"]').html(mounth);
+            $(e.currentTarget).find('div[id="dayOfWeek"]').html(weekkday);
+            $(e.currentTarget).find('div[id="dayofmounth"]').html(dayOfMounth);
+            $(e.currentTarget).find('span[id="hourofday"]').html(HourOfDay);
+        });
+       window.addEventListener( "pageshow", function ( event ) {
+      var historyTraversal = event.persisted ||
+                             ( typeof window.performance != "undefined" &&
+                                  window.performance.navigation.type === 2 );
+      if ( historyTraversal ) {
+        window.location.reload();
+      }
+    });
+</script>
+<script src="~/js/component.js"></script>

@@ -1,0 +1,39 @@
+.form-check {
+    display: inline;
+    margin: .2rem
+}
+
+.question {
+    margin-top: 1rem;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+
+.small-number {
+    width: 3.5rem;
+    display: inline-block;
+    padding: 4px 4px 4px 0;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.textbox {
+    direction: rtl;
+}
+
+.form-check-label span {
+    margin-right: 1.1rem;
+}
+
+.text-question {
+    display: inline-block;
+}
+.answer-questions{
+    text-align: center;
+    font-size: 22px;
+}
+.toMobile{
+   float: right;
+   margin-right: 1rem;
+}

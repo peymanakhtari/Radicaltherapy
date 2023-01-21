@@ -1,0 +1,24 @@
+﻿@using RadicalTherapy.Utility.Convertor
+@using RadicalTherapy.Data.model
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteComment</title>
+</head>
+<body>
+    <br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+    <br /><br />
+    @foreach (var item in (List<Subject>)Model)
+    {
+        <a style="font-size:24px"  href="@Url.Action("DelCmt","Admin",new {subjectId=item.Id})">@item.Tite</a>
+        <br />
+        <br />
+    }
+</body>
+</html>

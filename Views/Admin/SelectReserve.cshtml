@@ -1,0 +1,73 @@
+﻿@using RadicalTherapy.Utility.Convertor
+@model List<RadicalTherapy.Data.model.Reserve>
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SelectReserve</title>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+
+    <br /><br />
+    <a style="font-size:26px" href="@Url.Action("Index")">صفحه اصلی</a>
+    <br /><br />
+
+    <form action="/Admin/getReserves" method="post">
+        <input name="from" type="date" />
+        <input name="until" type="date" />
+        <input type="submit" />
+    </form>
+
+    <br /><br />
+    <table style="font-size:22px" id="customers">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><input readonly id="@item.Id" style="border:none;font-size:22px;width:150px" value="@item.Mobile" /></td>
+                <td>@item.Name</td>
+                <td>@item.Datetime.ToShamsi1().Day</td>
+                <td>@DateTool.MonthOfYear(item.Datetime.ToShamsi1())</td>
+                <td>@item.Datetime.TimeOfDay.ToString().Remove(item.Datetime.TimeOfDay.ToString().Length - 3)</td>
+            </tr>
+
+        }
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RadicalTherapy
+build_property.RootNamespace = RadicalTherapy
+build_property.ProjectDir = G:\radicaltherapy\radicaltherapy-v2-47\RadicalTherapy\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = G:\radicaltherapy\radicaltherapy-v2-47\RadicalTherapy
+build_property._RazorSourceGeneratorDebug = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin2/FillpreReservation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW4yXEZpbGxwcmVSZXNlcnZhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin2/ReserveQuestions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW4yXFJlc2VydmVRdWVzdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/AdminMainPage/AddNewContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYWluUGFnZVxBZGROZXdDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/AdminMainPage/AddNewSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYWluUGFnZVxBZGROZXdTdWJqZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/AdminMainPage/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYWluUGFnZVxDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/AdminMainPage/ContentList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYWluUGFnZVxDb250ZW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/AdminMainPage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYWluUGFnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/AdminMainPage/Subject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NYWluUGFnZVxTdWJqZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/AddCustomerVideo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQ3VzdG9tZXJWaWRlby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/ChangeDate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hhbmdlRGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/ConfirmNewRadicalReserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29uZmlybU5ld1JhZGljYWxSZXNlcnZlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/customerVideo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cY3VzdG9tZXJWaWRlby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/DelCmt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsQ210LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/DeleteComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlQ29tbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/FillRadicalReserves.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmlsbFJhZGljYWxSZXNlcnZlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/FilterRadicalReserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmlsdGVyUmFkaWNhbFJlc2VydmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/FutureRadicalReserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRnV0dXJlUmFkaWNhbFJlc2VydmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/NewComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTmV3Q29tbWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/RejectedRadicalReserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVqZWN0ZWRSYWRpY2FsUmVzZXJ2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/Reserves.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXJ2ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/SelectReserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2VsZWN0UmVzZXJ2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Admin/Statistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RhdGlzdGljcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/ActiveNotification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY3RpdmVOb3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/ConfirmationCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb25maXJtYXRpb25Db2RlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/CustomerVideo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDdXN0b21lclZpZGVvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/LoginMethod.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbk1ldGhvZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/PaymentNotSuccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXltZW50Tm90U3VjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/RadicalTherapyTimes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSYWRpY2FsVGhlcmFweVRpbWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Home/VerifyByHttpClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWZXJpZnlCeUh0dHBDbGllbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Partial/youtube.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbFx5b3V0dWJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/RadicalTherapyTime/ConfirmRules.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFkaWNhbFRoZXJhcHlUaW1lXENvbmZpcm1SdWxlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/RadicalTherapyTime/ZarinPalNotAccessible.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFkaWNhbFRoZXJhcHlUaW1lXFphcmluUGFsTm90QWNjZXNzaWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Shared/Layout_Subjects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dF9TdWJqZWN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Shared/_Layout_admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfYWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/Subjects/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/User/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VySW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/radicaltherapy/radicaltherapy-v2-47/RadicalTherapy/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
