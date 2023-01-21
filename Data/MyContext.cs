@@ -22,7 +22,7 @@ namespace RadicalTherapy.Data
         public DbSet<Question> Questions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           ptionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=radical3_;Integrated Security=true;");
+           optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=radical3_;Integrated Security=true;");
         }
     }
 }
